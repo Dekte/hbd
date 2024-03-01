@@ -8,6 +8,20 @@
     <link rel="icon" href="img/flowers.png" type="image/x-icon" />
     <script src="https://unpkg.com/feather-icons"></script>
     <title>ah kamu ultah yaa</title>
+
+    <style>
+      .greetings,
+      .description,
+      .button {
+        opacity: 0;
+        transition: opacity 1s ease-in;
+      }
+      .greetings.show,
+      .description.show,
+      .button.show {
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
     <div class="greetings">
@@ -27,14 +41,36 @@
     </div>
     <div class="button">
       <button>
-        <a href="inikado.html">
+        <a href="flower.html">
           <i data-feather="gift"></i>
         </a>
       </button>
       <p>nih buat kamu</p>
     </div>
+
+    <script>
+      feather.replace();
+
+      // Fungsi untuk menampilkan div secara bergantian
+      function showDivs() {
+        var divs = document.querySelectorAll(
+          ".greetings, .description, .button"
+        );
+        var index = 0;
+
+        function showNextDiv() {
+          if (index < divs.length) {
+            divs[index].classList.add("show");
+            index++;
+            setTimeout(showNextDiv, 3000); // Menampilkan setiap div selama 3 detik
+          }
+        }
+
+        showNextDiv();
+      }
+
+      // Panggil fungsi untuk menampilkan div secara bergantian
+      showDivs();
+    </script>
   </body>
-  <script>
-    feather.replace();
-  </script>
 </html>
